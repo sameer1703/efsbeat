@@ -1,0 +1,12 @@
+[Unit]
+Description=efsbeat
+Documentation=https://www.elastic.co/guide/en/beats/efsbeat/current/index.html
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/share/efsbeat/bin/efsbeat -c /etc/efsbeat/efsbeat.yml -path.home /usr/share/efsbeat -path.config /etc/efsbeat -path.data /var/lib/efsbeat -path.logs /var/log/efsbeat
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
